@@ -10,7 +10,7 @@ jobs:
     - name: Checkout the repo
       uses: actions/checkout@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: ${{ secrets.pwatestkey }}
 
     - name: Install npm packages
       shell: bash
@@ -33,3 +33,9 @@ jobs:
         azcliversion: latest
         inlineScript: |
           az storage blob upload-batch -s build -d \$web --account-name ${{ secrets.STORAGE_ACCOUNT_NAME }}
+
+      - name: Upload app
+        uses: actions/upload-artifact@v1
+        with:
+          name: app
+          path: build
