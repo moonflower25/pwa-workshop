@@ -95,6 +95,13 @@ az group deployment create \
   --verbose
 ```
 
+az group deployment create \
+  -n all-in-one \
+  -g pwa-test2 \
+  --template-file resources/azuredeploy.json \
+  --parameters @resources/azuredeploy.parameters.json \
+  --verbose
+
 > **트러블슈팅**: 만약 ARM 템플릿 실행에 실패할 경우, 앞서 애저 포탈을 통해 만들었던 애저 키 저장소가 완벽하게 지워지지 않았을 수도 있습니다. 이럴 땐 아래 명령어를 통해 애저 키 저장소를 수동으로 완전히 삭제합니다.
 > ```bash
 > az keyvault purge \
